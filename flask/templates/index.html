@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Diabetes Predictor</title>
+	<style>
+	
+	body { 
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans', sans-serif;
+	background: #f4eee8;
+	
+	}
+	
+	
+	.login { 
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	margin: -150px 0 0 -150px;
+	width:400px;
+	height:400px;
+}
+.login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+
+
+input{
+width:110%;
+}
+
+button{
+width:60%;
+background-color:#ffc288;
+}
+
+
+
+
+
+	</style>
+ 
+</head>
+
+<body>
+ <div class="login">
+	<h1 style="color:black">Diabetes Predictor</h1>
+
+     
+    <form  action="{{ url_for('predict')}}"method="post">
+        <input type="text" name="Glucose Level" placeholder="Glucose Level" required="required" /><br><br>
+    	<input type="text" name="Insulin" placeholder="Insulin" required="required" /><br><br>
+        <input type="text" name="BMI" placeholder="BMI" required="required" /><br><br>
+        <input type="text" name="Age" placeholder="Age" required="required" /><br><br>
+		
+
+        <center><button type="submit">Predict</button></center>
+    </form>
+
+   <br>
+   <br>
+  <div style="color:black;align:center">
+   
+   {{ prediction_text }}
+	</div>
+ </div>
+
+
+</body>
+</html>
