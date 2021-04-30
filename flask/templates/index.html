@@ -10,6 +10,8 @@
 	height:100%;
 	font-family: 'Open Sans', sans-serif;
 	background: #f4eee8;
+	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	
 	
 	}
 	
@@ -25,17 +27,76 @@
 .login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
 
 
-input{
-width:110%;
+input { 
+	width: 100%; 
+	margin-bottom: 10px; 
+	background: rgba(0,0,0,0.3);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+	-webkit-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
 }
-
-button{
+<!--button{
 width:60%;
-background-color:#ffc288;
+background-color:#ff6701;
+
+
+}!-->
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  
 }
 
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
 
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
 
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+::placeholder {
+  font-style: italic;
+  font-size: 1em;
+  
+  padding: 5px;
+}
 
 
 	</style>
@@ -44,7 +105,7 @@ background-color:#ffc288;
 
 <body>
  <div class="login">
-	<h1 style="color:black">Diabetes Predictor</h1>
+	<h1 style="color:white">Diabetes Predictor</h1>
 
      
     <form  action="{{ url_for('predict')}}"method="post">
@@ -54,15 +115,17 @@ background-color:#ffc288;
         <input type="text" name="Age" placeholder="Age" required="required" /><br><br>
 		
 
-        <center><button type="submit">Predict</button></center>
-    </form>
+<center>    <button class="button" style="vertical-align:middle"><span>Predict </span></button></center>
+
+	
+	</form>
 
    <br>
    <br>
-  <div style="color:black;align:center">
+  <center><div style="color:white;margin: 30px 100 0 -150px;">
    
    {{ prediction_text }}
-	</div>
+	</div></center>
  </div>
 
 
